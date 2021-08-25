@@ -28,7 +28,28 @@ each keypoint, also in the range [0.0, 1.0]..<br>
 ● This model is not intended for detecting poses of multiple people in the image(still in progress by tensorflow team) , there are some accurate multipe-pose models like OpenPose ( here is the paper https://arxiv.org/pdf/1812.08008.pdf )  
 
 ## Implementation in tensorflow
+```python
+  # Import TF and TF Hub libraries.
+  import tensorflow as tf
+  import tensorflow_hub as hub
 
+  # Load the input image.
+  image_path = 'PATH_TO_YOUR_IMAGE'
+  image = tf.io.read_file(image_path)
+  image = tf.compat.v1.image.decode_jpeg(image)
+  image = tf.expand_dims(image, axis=0)
+  # Resize and pad the image to keep the aspect ratio and fit the expected size.
+  image = tf.cast(tf.image.resize_with_pad(image, 256, 256), dtype=tf.int32)
+
+  # Download the model from TF Hub.
+  model = hub.load("https://tfhub.dev/google/movenet/singlepose/thunder/4")
+  movenet = model.signatures['serving_default']
+
+  # Run model inference.
+  outputs = movenet(image)
+  # Output is a [1, 1, 17, 3] tensor.
+  keypoints = outputs['output_0']
+  ```
 ![image](https://user-images.githubusercontent.com/47725118/130782594-675721c3-e6a8-417d-b963-73d001400993.png)
 
   
