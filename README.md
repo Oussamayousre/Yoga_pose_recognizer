@@ -53,6 +53,13 @@ you can find the implementations [here](https://tfhub.dev/s?tf-version=tf2&q=mov
  ```
  ## Example on a real Dataset
  You can download the yoga-pose dataset from [here](https://laurencemoroney.com/2021/08/23/yogapose-dataset.html)
+ before using the code above make sure you install those packages in your working directory 
+ ```python
+
+# Download model from TF Hub and check out inference code from GitHub
+!wget -q -O movenet_thunder.tflite https://tfhub.dev/google/lite-model/movenet/singlepose/thunder/tflite/float16/4?lite-format=tflite
+!git clone https://github.com/tensorflow/examples.git
+ ```
 ![image](https://user-images.githubusercontent.com/47725118/130782594-675721c3-e6a8-417d-b963-73d001400993.png)
 
   
