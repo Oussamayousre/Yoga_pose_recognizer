@@ -15,8 +15,8 @@ MoveNet is a convolutional neural network that runs on RGB images and predicts h
 ### Model Architecture
 MobileNetV2 image feature extractor with Feature Pyramid Network(here is the paper https://arxiv.org/pdf/1612.03144.pdf) decoder (to stride of 4)
 followed by CenterNet prediction heads with custom post-processing logic. Lightning uses depth multiplier 1.0 while Thunder uses depth multiplier 1.75 
-MobileNetV2 architecture : 
 ![image](https://user-images.githubusercontent.com/47725118/130789918-65d968b8-5a5e-46a2-9129-8d9225435eb6.png)
+MobileNetV2 architecture : 
 ### Inputs
 A frame of video or an image, represented as an int32 tensor of shape: 192x192x3(Lightning) / 256x256x3(Thunder). Channels order: RGB with values in [0, 255].
 ### Outputs
