@@ -20,10 +20,15 @@ MobileNetV2 architecture :
 ### Inputs
 A frame of video or an image, represented as an int32 tensor of shape: 192x192x3(Lightning) / 256x256x3(Thunder). Channels order: RGB with values in [0, 255].
 ### Outputs
-A float32 tensor of shape [1, 1, 17, 3].
+A float32 tensor of shape [1, 1, 17, 3].<br>
 ● The first two channels of the last dimension represents the yx coordinates (normalized to image frame, i.e. range in [0.0, 1.0]) of the 17 keypoints (in the order of: [nose, left eye, right eye, left ear, right ear, left shoulder, right shoulder, left elbow, right elbow, left wrist,right wrist, left hip, right hip, left knee, right knee, left ankle, right ankle]).
 ● The third channel of the last dimension represents the prediction confidence scores of
-each keypoint, also in the range [0.0, 1.0].
+each keypoint, also in the range [0.0, 1.0]..<br>
+### Out-of-scope Use Cases 
+● This model is not intended for detecting poses of multiple people in the image(still in progress by tensorflow team) , there are some accurate multipe-pose models like OpenPose ( here is the paper https://arxiv.org/pdf/1812.08008.pdf )  
+
+## Implementation in tensorflow
+
 ![image](https://user-images.githubusercontent.com/47725118/130782594-675721c3-e6a8-417d-b963-73d001400993.png)
 
   
